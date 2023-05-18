@@ -1,0 +1,19 @@
+{
+    "contracts": {
+        "SuncProxyAdmin": "",
+        "SunriseRandao": {
+            "proxy": "",
+            "impl": ""
+        }
+    },
+    "mapping": {},
+    "roles": {},
+    "config": {
+        "susd.address": "",
+        "randao.period": "10",
+        "randao.rewardPerBlock": "115",
+        "randao.tokenDuration": "15",
+        "randao.signer": "",
+        "randao.manager": ""
+    }
+}
