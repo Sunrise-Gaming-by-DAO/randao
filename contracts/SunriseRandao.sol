@@ -74,6 +74,7 @@ contract SunriseRandao is Initializable, OwnableUpgradeable, AccessControlUpgrad
     event ClaimReward(address account, uint fromBlock, uint toBlock, uint192 totalReward);
     event RewardPerBlock(uint fromBlock, uint192 value);
     event RandaoPeriodUpdated(uint value);
+    event TokenDurationUpdated(uint value);
     event SignerUpdated(address indexed signer);
     event GameManagerUpdated(address manager);
 
@@ -127,6 +128,13 @@ contract SunriseRandao is Initializable, OwnableUpgradeable, AccessControlUpgrad
             RANDAO_PERIOD = value;
         
         emit RandaoPeriodUpdated(value);
+    }
+
+    function setTokenDuration(uint64 value) external onlyOperator {
+        if (TOKEN_VALID_DURATION != value)
+            TOKEN_VALID_DURATION = value;
+        
+        emit TokenDurationUpdated(value);
     }
 
     function setSigner(address signer) external onlyOwner {

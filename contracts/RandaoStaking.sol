@@ -65,21 +65,21 @@ contract RandaoStaking is Initializable, OwnableUpgradeable {
     }
 
     function withdraw(uint amount) public {
-        StakingInfo storage info = stakes[msg.sender];
+    StakingInfo storage info = stakes[msg.sender];
 
-        if (amount == 0 && info.amount > MIN_STAKE_AMOUNT)
-            amount = info.amount - MIN_STAKE_AMOUNT;
+    if (amount == 0 && info.amount > MIN_STAKE_AMOUNT)
+        amount = info.amount - MIN_STAKE_AMOUNT;
 
-        if (amount > info.amount)
-            amount = info.amount;
+    if (amount > info.amount)
+        amount = info.amount;
 
-        if (amount == 0)
-            return;
+    if (amount == 0)
+        return;
 
-        TOKEN.transfer(msg.sender, amount);
+    TOKEN.transfer(msg.sender, amount);
 
-        info.amount -= amount;
+    info.amount -= amount;
 
-        emit Withdraw(msg.sender, amount);
+    emit Withdraw(msg.sender, amount);
     }
 }
